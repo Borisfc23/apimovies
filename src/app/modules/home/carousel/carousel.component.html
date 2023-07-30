@@ -1,0 +1,101 @@
+<ng-container *ngIf="upcoming.results && !loading; else elseTemplate">
+    <!-- Slider main container -->
+    <div class="h-96">
+        <div class="carousel">
+            <div class="carousel-inner h-full">
+                <div *ngFor="let top of upcoming.results;let i=index" class="carousel-item"
+                    [ngClass]="{ 'active': activeIndex === i }"
+                    [style.background-image]="'linear-gradient(to right, rgba(31.5, 31.5, 52.5, .95) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 52.5, 0.74) 50%, rgba(31.5, 31.5, 52.5, 0.94) 100%),url('+movieIMG+top.backdrop_path+')'"
+                    style="background-position: center;background-size: cover;">
+                    <!-- CONTENT CAROUSEL -->
+                    <div class="max-w-7xl mx-auto  flex px-2 s:px-6 lg:px-8  centrado">
+                        <div class="w-1/4 md:block hidden mr-5 lg:mr-0">
+                            <img [src]="movieIMG+top.poster_path" class="rounded-xl h-auto lg:w-3/4 w-full">
+                        </div>
+                        <div class="w-full md:w-3/4 flex justify-center flex-col ">
+                            <h1 *ngIf="top.release_date"
+                                class="text-white text-3xl lg:text-4xl title-font font-medium mb-1">
+                                {{top.title}}
+                                ({{top.release_date.split("-")[0] }})</h1>
+                            <span class="text-white text-xs md:text-base">{{top.release_date}}(PE)
+                                Drama, Historia
+                                3h 1m</span>
+                            <div class="mt-1 md:mt-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                        {{top.vote_average}}
+                                        out of 10</p>
+                                </div>
+
+                            </div>
+                            <div>
+                                <h4 class="text-base md:text-xl text-white my-2">Overview</h4>
+                                <p class="leading-relaxed mb-2 md:mb-4 text-white text-sm md:text-base">{{top.overview}}
+                                </p>
+                            </div>
+                            <div class="w-max mt-4">
+                                <button type="button" (click)="viewDetails(top.id)"
+                                    class=" px-3 py-2 text-sm md:px-5 md:py-3  md:text-base font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <svg class="w-4 h-4 text-white mr-2" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 25">
+                                        <path strokeLinecap="round" strokeLinejoin="round"
+                                            d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                                    </svg>
+                                    View Details
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" (click)="prevSlide()" *ngIf="activeIndex > 0">&#10094;</a>
+            <a class="carousel-control-next" (click)="nextSlide()" *ngIf="activeIndex < slides.length - 1">&#10095;</a>
+        </div>
+    </div>
+
+
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="text-center d flex items-center justify-center" style="height: 68.2vh;">
+        <div role="status">
+            <svg aria-hidden="true"
+                class="inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</ng-template>

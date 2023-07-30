@@ -1,0 +1,83 @@
+<div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" *ngFor="let top of upcoming.results"
+            [style.background-image]="'linear-gradient(to right, rgba(31.5, 31.5, 52.5, .95) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 52.5, 0.74) 50%, rgba(31.5, 31.5, 52.5, 0.94) 100%),url('+movieIMG+top.backdrop_path+')'"
+            style="background-position: center;background-size: cover;">
+            <div class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <div class="max-w-7xl mx-auto flex px-2 s:px-6 lg:px-8 ">
+                    <div class="w-1/4 md:block hidden mr-5 lg:mr-0">
+                        <img [src]="movieIMG+top.poster_path" class="rounded-xl h-auto lg:w-3/4 w-full">
+                    </div>
+                    <div class="w-full md:w-3/4 flex justify-center flex-col ">
+                        <h1 *ngIf="top.release_date"
+                            class="text-white text-3xl lg:text-4xl title-font font-medium mb-1">
+                            {{top.title}}
+                            ({{top.release_date.split("-")[0] }})</h1>
+                        <span class="text-white text-xs md:text-base">{{top.release_date}}(PE)
+                            Drama, Historia
+                            3h 1m</span>
+                        <div class="mt-1 md:mt-4">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path
+                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path
+                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path
+                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                </svg>
+                                <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path
+                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                </svg>
+                                <svg class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                    <path
+                                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                </svg>
+                                <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    {{top.vote_average}}
+                                    out of 10</p>
+                            </div>
+
+                        </div>
+                        <div>
+                            <h4 class="text-base md:text-xl text-white my-2">Overview</h4>
+                            <p class="leading-relaxed mb-2 md:mb-4 text-white text-sm md:text-base">{{top.overview}}
+                            </p>
+                        </div>
+                        <div class="w-max mt-4">
+                            <button type="button" (click)="viewDetails(top.id)"
+                                class=" px-3 py-2 text-sm md:px-5 md:py-3  md:text-base font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="w-4 h-4 text-white mr-2" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 25">
+                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                        d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                                </svg>
+                                View Details
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
