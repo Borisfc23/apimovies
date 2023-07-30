@@ -1,3 +1,4 @@
+import { ListService } from './../../../services/list.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiService } from './../../../services/api.service';
 import { Component } from '@angular/core';
@@ -43,18 +44,32 @@ export class MovieDetailComponent extends BaseComponent<MovieModel.Movie> {
   override set setResponseService(val: MovieModel.Movie) {
     this.movie = val;
   }
-
+  idMovie: number = 1;
+  arrayFromLocalStorage: MovieModel.Movie[] = [];
+  favoritesStyles = false;
   constructor(
     protected override readonly apiService: ApiService<MovieModel.Movie>,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly listService: ListService,
     private readonly router: Router
   ) {
     super(apiService);
-  }
-  override ngOnInit(): void {
     this.activatedRoute.params.subscribe((val) => {
       this.getMovieDetail(val['id']);
+      this.idMovie = val['id'];
     });
+  }
+  override ngOnInit(): void {
+    const arrayAsString = localStorage.getItem('favorites');
+    if (arrayAsString) {
+      this.arrayFromLocalStorage = JSON.parse(arrayAsString);
+    }
+    const pintarHeart = this.arrayFromLocalStorage.find(
+      (item) => item.id == this.idMovie
+    );
+    if (pintarHeart) {
+      this.favoritesStyles = true;
+    }
   }
   private getMovieDetail(id: string) {
     this.paramsConfig.url = ConstantUri.movieDetail + '/' + id;
@@ -66,5 +81,12 @@ export class MovieDetailComponent extends BaseComponent<MovieModel.Movie> {
   }
   returnHome() {
     this.router.navigate(['/']);
+  }
+
+  // ADD MOVIE
+  isDisabledFavorite: boolean = false;
+  onAddFavorite(movie: MovieModel.Movie) {
+    this.listService.addFavorite(movie);
+    this.isDisabledFavorite = true;
   }
 }

@@ -19,7 +19,7 @@ export class LoginGuard implements CanActivate {
     if (!this.apiService.isAutenticated()) {
       return true;
     }
-    this.router.navigate(['populars']);
+    this.router.navigate(['movies/favorites']);
     return false;
   }
 }
