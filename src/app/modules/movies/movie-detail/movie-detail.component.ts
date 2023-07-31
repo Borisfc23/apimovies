@@ -58,19 +58,9 @@ export class MovieDetailComponent extends BaseComponent<MovieModel.Movie> {
       this.getMovieDetail(val['id']);
       this.idMovie = val['id'];
     });
+    this.favoritesStyles = this.listService.getFavoriteStyle(this.idMovie);
   }
-  override ngOnInit(): void {
-    const arrayAsString = localStorage.getItem('favorites');
-    if (arrayAsString) {
-      this.arrayFromLocalStorage = JSON.parse(arrayAsString);
-    }
-    const pintarHeart = this.arrayFromLocalStorage.find(
-      (item) => item.id == this.idMovie
-    );
-    if (pintarHeart) {
-      this.favoritesStyles = true;
-    }
-  }
+  override ngOnInit(): void {}
   private getMovieDetail(id: string) {
     this.paramsConfig.url = ConstantUri.movieDetail + '/' + id;
     this.paramsConfig.params = ConstantUri.tokenMe;
@@ -82,8 +72,7 @@ export class MovieDetailComponent extends BaseComponent<MovieModel.Movie> {
   returnHome() {
     this.router.navigate(['/']);
   }
-
-  // ADD MOVIE
+  // ADD MOVIE FAVORITES
   isDisabledFavorite: boolean = false;
   onAddFavorite(movie: MovieModel.Movie) {
     this.listService.addFavorite(movie);

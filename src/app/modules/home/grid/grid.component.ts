@@ -1,3 +1,4 @@
+import { ListService } from './../../../services/list.service';
 import { Router } from '@angular/router';
 import { ApiService } from './../../../services/api.service';
 import { Component } from '@angular/core';
@@ -17,14 +18,15 @@ export class GridComponent extends BaseComponent<MoviesModel.MoviesResponse> {
     total_pages: 0,
     total_results: 0,
   };
-
   arrayPages = new Array(5).fill('');
   movieIMG = ConstantUri.pathIMG;
   public override set setResponseService(value: MoviesModel.MoviesResponse) {
     this.movies.results = value.results;
+    console.log('moviesgrid', this.movies.results);
   }
   constructor(
     protected override readonly apiService: ApiService<MoviesModel.MoviesResponse>,
+    private readonly listService: ListService,
     private readonly router: Router
   ) {
     super(apiService);
@@ -45,5 +47,14 @@ export class GridComponent extends BaseComponent<MoviesModel.MoviesResponse> {
   /// VER DETALLES
   viewDetails(id: number) {
     this.router.navigate([`/movies/details/${id}`]);
+  }
+  //ADD FAVORITES
+  isDisabledFavorite: boolean = false;
+  onAddFavorite(movie: MoviesModel.Result) {
+    this.listService.addFavorite(movie);
+    this.isDisabledFavorite = true;
+  }
+  getStyleHeart(id: number): boolean {
+    return this.listService.getFavoriteStyle(id);
   }
 }
