@@ -9,7 +9,7 @@ export class ConstantUri {
   public static readonly moviesPopular = baseURL + '/movie/popular';
   public static readonly moviesUpcoming = baseURL + '/movie/upcoming';
   public static readonly moviesDiscover = baseURL + '/discover/movie?page=';
-  public static readonly recommend = baseURL + '/movie/2/recommendations';
+  public static readonly recommend = baseURL + '/movie/3/recommendations';
   public static readonly pathIMG = 'https://image.tmdb.org/t/p/original';
   public static readonly movieDetail = baseURL + '/movie';
   public static readonly searchMovie = baseURL + '/search/movie?query=';

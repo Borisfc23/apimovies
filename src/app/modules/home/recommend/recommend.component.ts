@@ -20,7 +20,7 @@ export class RecommendComponent extends BaseComponent<MoviesModel.MoviesResponse
   movieIMG = ConstantUri.pathIMG;
   public override set setResponseService(value: MoviesModel.MoviesResponse) {
     this.recommend.results = value.results.slice(0, 5);
-    // console.log(this.recommend.results);
+    console.log(this.recommend.results);
   }
   constructor(
     protected override readonly apiService: ApiService<MoviesModel.MoviesResponse>,
